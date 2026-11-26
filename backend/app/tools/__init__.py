@@ -1,0 +1,1 @@
+"""Voice tool contracts."""
