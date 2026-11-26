@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  /* Surfaces */
+  --bg-canvas: #F4F2EC;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #EFECE5;
+  --bg-hover: #E7E3DA;
+
+  /* Sidebar Forest Palette */
+  --bg-sidebar: #17382B;
+  --bg-sidebar-elevated: rgba(255, 255, 255, 0.08);
+  --bg-sidebar-active: rgba(255, 255, 255, 0.14);
+  --border-sidebar: rgba(255, 255, 255, 0.12);
+  --ink-sidebar: #F6F5F0;
+  --ink-sidebar-muted: rgba(246, 245, 240, 0.72);
+
+  /* Borders & Dividers */
+  --border-hairline: #E3E0D6;
+  --border-strong: #CCC7BA;
+
+  /* Ink / Typography */
+  --ink-primary: #181B1A;
+  --ink-secondary: #525855;
+  --ink-muted: #636965;
+  --ink-inverse: #FFFFFF;
+
+  /* Brand & Accents */
+  --accent-primary: #1B4D3B;
+  --accent-primary-hover: #143B2D;
+  --accent-sage-bg: #E5EFE9;
+  --accent-sage-border: #BDD2C5;
+  --accent-sage-ink: #174434;
+
+  /* Semantic Status */
+  --status-success-bg: #E5EFE9;
+  --status-success-ink: #174434;
+  --status-warning-bg: #FDF4E4;
+  --status-warning-ink: #855210;
+  --status-warning-border: #EDD4A6;
+  --status-danger: #B43C2E;
+  --status-danger-hover: #962F23;
+  --status-danger-bg: #FBECE9;
+  --status-danger-border: #E8BEB8;
+  --status-danger-ink: #8C2B20;
+
+  /* Elevation */
+  --shadow-surface: 0 1px 2px rgba(24, 27, 26, 0.035);
+  --shadow-overlay: 0 12px 32px -8px rgba(24, 27, 26, 0.14),
+    0 2px 6px rgba(24, 27, 26, 0.06);
+}
+
+/* Warm alabaster canvas with subtle tonal depth */
+.havn-workspace-bg {
+  background-color: var(--bg-canvas);
+  background-image:
+    radial-gradient(ellipse 80% 55% at 15% 0%, rgba(255, 255, 255, 0.65) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 50% at 90% 10%, rgba(217, 226, 219, 0.35) 0%, transparent 65%),
+    linear-gradient(180deg, #F6F4EE 0%, #F1EFE8 100%);
+}
+
+/* Fine paper/film grain texture overlay across main workspace only */
+.havn-paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+@keyframes havnBotanicalSway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, 2px, 0) rotate(0.6deg);
+  }
+}
+
+.havn-botanical-sway {
+  animation: havnBotanicalSway 18s ease-in-out infinite;
+  transform-origin: top right;
+}
+
+@keyframes havnRowSettleBooked {
+  0% {
+    background-color: var(--accent-sage-bg);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes havnRowSettleCancelled {
+  0% {
+    background-color: var(--status-danger-bg);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes havnTranscriptIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes havnModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes havnRingPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(27, 77, 59, 0.28);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(27, 77, 59, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(27, 77, 59, 0);
+  }
+}
+
+.row-highlight-booked {
+  animation: havnRowSettleBooked 2400ms ease-out forwards;
+}
+
+.row-highlight-cancelled {
+  animation: havnRowSettleCancelled 2400ms ease-out forwards;
+}
+
+.transcript-enter {
+  animation: havnTranscriptIn 160ms ease-out forwards;
+}
+
+.havn-modal-enter {
+  animation: havnModalIn 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.havn-ring-pulse {
+  animation: havnRingPulse 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .havn-botanical-sway,
+  .row-highlight-booked,
+  .row-highlight-cancelled,
+  .transcript-enter,
+  .havn-modal-enter,
+  .havn-ring-pulse {
+    animation: none;
+  }
+}
