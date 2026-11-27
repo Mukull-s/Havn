@@ -470,7 +470,7 @@ export function HavnWorkspace() {
                   </div>
                 </section>
               ) : dashboard ? (
-                <>
+                <div key={activeTab} className="havn-view-enter">
                   {activeTab === "overview" ? (
                     <OverviewView
                       dashboard={dashboard}
@@ -510,7 +510,7 @@ export function HavnWorkspace() {
                       clinicTimezone={dashboard.clinic.timezone}
                     />
                   ) : null}
-                </>
+                </div>
               ) : null}
             </div>
 

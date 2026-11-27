@@ -173,12 +173,12 @@ function AudioWaveformStrip({
       >
         {bars.map((level, idx) => {
           const clamped = Math.max(0, Math.min(1, level));
-          const heightPx = Math.round(4 + clamped * 24);
+          const scale = Math.max(0.14, 0.14 + clamped * 0.86);
           return (
             <span
               key={idx}
-              className={`w-[3px] rounded-full transition-[height] duration-75 ${activeColor}`}
-              style={{ height: `${heightPx}px` }}
+              className={`h-7 w-[3px] origin-center rounded-full transition-transform duration-75 ease-out will-change-transform ${activeColor}`}
+              style={{ transform: `scaleY(${scale.toFixed(3)})` }}
             />
           );
         })}
@@ -457,8 +457,7 @@ function CallHeroCard({
             <StatusBadge tone={pillTone} label={pillLabel} />
 
             <p className="mt-3 max-w-[260px] text-xs leading-[1.55] text-[var(--ink-secondary)]">
-              Ava can help with appointments, availability, and cancellations
-              through a natural conversation.
+              Check openings, verify your number by voice, and book or cancel a visit.
             </p>
           </div>
 
@@ -491,7 +490,7 @@ function CallHeroCard({
             type="button"
             onClick={onStartCall}
             disabled={!voiceReady && !state.isPreview}
-            className="mt-4 inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[var(--bg-sidebar)] px-5 text-sm font-medium text-white transition-colors hover:bg-[var(--accent-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-55"
+            className="mt-4 inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[var(--bg-sidebar)] px-5 text-sm font-medium text-white transition-all hover:bg-[var(--accent-primary-hover)] active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-55"
           >
             <Phone className="h-4 w-4" strokeWidth={1.75} />
             <span>{isError ? "Call Ava again" : "Call Ava · Reception"}</span>
@@ -564,7 +563,7 @@ function CallHeroCard({
               <button
                 type="button"
                 onClick={onStartCall}
-                className="inline-flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-[var(--bg-sidebar)] px-4 text-xs font-medium text-white transition-colors hover:bg-[var(--accent-primary-hover)]"
+                className="inline-flex h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-[var(--bg-sidebar)] px-4 text-xs font-medium text-white transition-all hover:bg-[var(--accent-primary-hover)] active:scale-[0.985]"
               >
                 <Phone className="h-3.5 w-3.5" strokeWidth={1.75} />
                 <span>Start new call</span>
@@ -572,7 +571,7 @@ function CallHeroCard({
               <button
                 type="button"
                 onClick={onResetCall}
-                className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-3.5 text-xs font-medium text-[var(--ink-secondary)] hover:bg-[var(--bg-subtle)] hover:text-[var(--ink-primary)]"
+                className="inline-flex h-10 cursor-pointer items-center justify-center rounded-full border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-3.5 text-xs font-medium text-[var(--ink-secondary)] transition-all hover:bg-[var(--bg-subtle)] hover:text-[var(--ink-primary)] active:scale-[0.985]"
               >
                 Done
               </button>
@@ -585,7 +584,7 @@ function CallHeroCard({
                 disabled={!isConnected}
                 aria-pressed={state.muted}
                 aria-label={state.muted ? "Unmute microphone" : "Mute microphone"}
-                className={`inline-flex h-10 min-w-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full border px-3 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+                className={`inline-flex h-10 min-w-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full border px-3 text-xs font-medium transition-all active:scale-[0.985] disabled:cursor-not-allowed disabled:opacity-50 ${
                   state.muted
                     ? "border-[var(--status-warning-border)] bg-[var(--status-warning-bg)] text-[var(--status-warning-ink)]"
                     : "border-[var(--border-hairline)] bg-[var(--bg-surface)] text-[var(--ink-primary)] hover:bg-[var(--bg-subtle)]"
@@ -604,7 +603,7 @@ function CallHeroCard({
                 onClick={onEndCall}
                 disabled={isEnding}
                 aria-label="End voice call"
-                className="inline-flex h-10 min-w-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[var(--status-danger)] px-3 text-xs font-medium text-white transition-colors hover:bg-[var(--status-danger-hover)] disabled:cursor-not-allowed disabled:opacity-55"
+                className="inline-flex h-10 min-w-10 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[var(--status-danger)] px-3 text-xs font-medium text-white transition-all hover:bg-[var(--status-danger-hover)] active:scale-[0.985] disabled:cursor-not-allowed disabled:opacity-55"
               >
                 <PhoneOff className="h-3.5 w-3.5" strokeWidth={1.75} />
                 <span>

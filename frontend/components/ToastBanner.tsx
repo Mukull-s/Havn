@@ -28,7 +28,7 @@ export function ToastBanner({ toasts, onDismiss }: ToastBannerProps) {
           <div
             key={toast.id}
             role="status"
-            className="pointer-events-auto flex items-start gap-3 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-4 py-3 shadow-[var(--shadow-overlay)]"
+            className="havn-toast-enter pointer-events-auto flex items-start gap-3 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-4 py-3 shadow-[var(--shadow-overlay)]"
           >
             {isDanger ? (
               <AlertCircle

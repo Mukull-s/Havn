@@ -613,7 +613,7 @@ export function DoctorsView({
                       type="button"
                       onClick={onStartCall}
                       disabled={!voiceReady}
-                      className="inline-flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[var(--bg-sidebar)] px-3.5 text-xs font-medium text-white transition-colors hover:bg-[var(--accent-primary-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] disabled:cursor-not-allowed disabled:opacity-50"
+                      className="inline-flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-full bg-[var(--bg-sidebar)] px-3.5 text-xs font-medium text-white transition-all hover:bg-[var(--accent-primary-hover)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)] disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <Phone className="h-3.5 w-3.5" strokeWidth={1.75} />
                       <span>Call Ava</span>
