@@ -1,3 +1,4 @@
+<img width="2172" height="724" alt="Havn AI Voice Healthcare Banner" src="https://github.com/user-attachments/assets/d4fb49b3-038e-482b-be15-8d7f6715872a" />
 # Havn
 
 Browser-based AI voice receptionist (`Ava`) and scheduling dashboard for a fictional outpatient clinic. Callers speak over WebRTC to check doctor availability, book an appointment, or cancel an existing one while the dashboard updates from SQLite.
